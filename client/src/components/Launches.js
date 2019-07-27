@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { gql } from 'apollo-boost'
 import { Query } from 'react-apollo'
+import LaunchItem from './LaunchItem'
 
 const LAUNCHES_QUERY = gql`
   query LaunchesQuery {
@@ -27,8 +28,13 @@ class Launches extends Component {
           {({ loading, error, data }) => {
             if (loading) return <h4>loading...</h4>
             if (error) console.log(error)
-            console.log(data)
-            return <h1> Test</h1>
+
+            return data.launches.map((launch, index) => (
+              <LaunchItem
+                key={index}
+                launch={launch}
+              />
+            ))
           }}
         </Query>
       </div>
