@@ -1,0 +1,27 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: RootQueryType
+}
+
+type Launch {
+    flight_number: Int
+    launch_date_local: String
+    launch_success: Boolean
+    launch_year: String
+    mission_name: String
+    rocket: Rocket
+}
+
+type Rocket {
+    rocket_id: String
+    rocket_name: String
+    rocket_type: String
+}
+
+type RootQueryType {
+    launch(flight_number: Int): Launch
+    launches: [Launch]
+    rocket(rocket_id: String): Rocket
+    rockets: [Rocket]
+}
